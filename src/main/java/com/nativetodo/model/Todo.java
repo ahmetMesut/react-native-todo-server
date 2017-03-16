@@ -1,5 +1,7 @@
 package com.nativetodo.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,18 +12,24 @@ public class Todo implements Serializable {
     private static final long serialVersionUID = 1914842698571907341L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue(generator = "system-uuid")
     @Column
-    private long id;
+    private String id;
 
-    @Column(unique = true)
+    @Column
     private String todoName;
 
-    public long getId() {
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
