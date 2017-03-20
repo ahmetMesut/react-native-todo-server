@@ -16,8 +16,9 @@ public class TodoController {
     private TodoService todoService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public void createUser(@RequestBody Todo todo) {
+    public Todo createUser(@RequestBody Todo todo) {
         todoService.create(todo);
+        return todo;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -26,13 +27,13 @@ public class TodoController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void update(@RequestBody Todo todo) {
+    public Todo update(@RequestBody Todo todo) {
         todoService.update(todo);
+        return todo;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable long id) {
-        Todo todo = todoService.findTodoById(id);
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void delete(@RequestBody Todo todo) {
         todoService.delete(todo);
     }
 }

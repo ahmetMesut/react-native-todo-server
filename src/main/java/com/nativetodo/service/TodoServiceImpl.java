@@ -36,8 +36,4 @@ public class TodoServiceImpl implements TodoService {
         todoDao.update(todo);
     }
 
-    @Override
-    public Todo findTodoById(long id) {
-        return todoDao.findTodoById(id);
-    }
 }

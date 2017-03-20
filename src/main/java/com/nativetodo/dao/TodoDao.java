@@ -13,6 +13,4 @@ public interface TodoDao {
     List getAllTodo();
 
     void update(Todo todo);
-
-    Todo findTodoById(long id);
 }
